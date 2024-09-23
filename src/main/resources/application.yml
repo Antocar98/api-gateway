@@ -1,0 +1,55 @@
+# ==============================================================
+# = SPRING API GATEWAY
+# ==============================================================
+server:
+  port: 8765
+  tomcat:
+    threads:
+      max: 5
+
+spring:
+  application:
+    name: SpringApiGateway
+# ==============================================================
+# = Sicurezza JWT
+# ==============================================================
+
+sicurezza:
+  header: Authorization
+  secret: $aBcDeFgHiJkLmNoPqRsTuVwXyZ1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+
+# ==============================================================
+# = Eureka Properties
+# = Nota: prima di attivare il servizio servono tre heartbeat
+# ==============================================================
+eureka:
+  # ==============================================================
+  # = Impostazioni Instance
+  # ==============================================================
+  instance:
+    #intervallo di attesa prima della rimozione del servizio (def 90 sec)
+    lease-expiration-duration-in-seconds: 60
+    #intervallo di invio dell'heartbeat (def 30 sec)
+    leaseRenewalIntervalInSeconds: 15
+    #id di identificazione dell'istanza
+    instanceId: ${server.port}-${spring.application.name}
+    #registrazione per indirizzo ip (defualt hostname)
+    preferIpAddress: true
+  # ==============================================================
+  # = Impostazioni Client
+  # ==============================================================
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://user:BimBumBam_2018@localhost:8761/eureka/}
+    #time out di connessione in secondi al server Eureka (def 5 sec)
+    eureka-server-connect-timeout-seconds: 8
+
+# ==============================================================
+# = Logs Parameters
+# ==============================================================
+logging:
+  level:
+    org.springframework.cloud: DEBUG
+    org.springframework.security: DEBUG
