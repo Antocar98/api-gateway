@@ -22,7 +22,7 @@ public class GatewayConfig
 					.route("articoliModule", r -> r
 							.path("/api/articoli/**")
 							.filters(f -> f.filter(jwtAuthFilter))
-							.uri("lb://ArticoliWebService"))
+							.uri("lb://ARTICOLIWEBSERVICE"))
 					.route("prezziModule", r -> r
 							.path("/api/prezzi/**")
 								//.and().method("GET,POST,DELETE")
@@ -34,6 +34,5 @@ public class GatewayConfig
 							.filters(f -> f.filter(jwtAuthFilter))
 							.uri("lb://PriceArtService"))
 				.build();
-								
 	}
 }

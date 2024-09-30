@@ -1,12 +1,6 @@
 # ==============================================================
 # = SPRING API GATEWAY
 # ==============================================================
-server:
-  port: 8765
-  tomcat:
-    threads:
-      max: 5
-
 spring:
   application:
     name: SpringApiGateway
