@@ -1,6 +1,13 @@
 # ==============================================================
 # = SPRING API GATEWAY
 # ==============================================================
+server:
+  port: 8765
+  netty:
+    connection-timeout: 2s
+    idle-timeout: 15s
+  shutdown: graceful
+  
 spring:
   application:
     name: SpringApiGateway
